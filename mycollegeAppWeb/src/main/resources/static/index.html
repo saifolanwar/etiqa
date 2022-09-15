@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<title>MY College's Students with Course</title>
+<link href="css/angular-bootstrap.css" rel="stylesheet">
+<link href="css/material.min.css" rel="stylesheet">
+<link href="css/datatables.css" rel="stylesheet">
+</head>
+
+<body ng-app="myCollege">
+  <div class="container">
+    <h1>List of Students with Course</h1>
+    <div ng-controller="HomeController" ng-cloak class="ng-cloak">
+	  <Button variant="contained" ng-click="showAdd()" id="buttonAdd">Add Record</Button>
+	  <br/>
+      <table datatable="ng" dt-options="vm.dtOptions" id="studentCourse" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list" ng-click="showUpdateDelete(item)">
+            	<td>{{item.id}}</td>
+            	<td>{{item.name}}</td>
+            	<td>{{item.course}}</td>
+            	<td>{{item.phone}}</td>
+            	<td>{{item.email}}</td>
+            </tr>
+        </tbody>
+      </table>
+      <div id="addUpdateDelete" style="width:100%; display:none;">
+	      <table class="display" style="width:100%;">
+	            <tr>
+	                <th>Name</th><td><input ng-model="name" type="text" id="name"/></td>
+	            </tr>
+	            <tr>
+	                <th>Course</th><td><input ng-model="course" type="text" id="course"/></td>
+	            </tr>
+	            <tr>
+	                <th>Phone Number</th><td><input ng-model="phone" type="text" id="phone"/></td>
+	            </tr>
+	            <tr>
+	                <th>Email</th><td><input ng-model="email" type="text" id="email"/></td>
+	            </tr>
+	      </table>
+	  	  <Button variant="contained" ng-click="showList()" id="buttonBack">Back to List</Button>
+		  <Button variant="contained" ng-click="createUpdate()" id="buttonCreateUpdate">Create / Update</Button>
+		  <Button variant="contained" ng-click="doDelete()" style="display:none;" id="buttonDelete">Delete</Button>
+      </div>
+    </div>
+    
+  </div>
+  <script src="js/angular-bootstrap.js" type="text/javascript"></script>
+  <script src="js/datatables.js" type="text/javascript"></script>
+  <script src="js/index.js" type="text/javascript"></script>
+</body>
+</html>
